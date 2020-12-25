@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="register.css">
+<style>
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    /*border: 1px solid #ccc;*/
+    /*background-color: #f1f1f1;*/
+}
+
+h1{
+  text-align:center;
+  color:#2A88AD;
+font-family:Georgia;
+}
+/* Style the buttons inside the tab */
+div.tab button {
+    background-color: #2A88AD;
+    float: left;
+    border: 1px solid #ccc;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+div.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+div.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+table{
+   width="100%";
+}
+</style>
+</head>
+<body>
+
+<h1>RECEPTIONIST</h1>
+
+<div class="tab">
+  <a href="dept.html"><button class="tablinks" >DOCTOR INFO</button></a>
+  <button class="tablinks" onclick="phar(event, 'patient')">PATIENT</button>
+  <button class="tablinks" onclick="phar(event, 'findpatient')">FIND PATIENT</button>
+  <a href="Homepage.html"><button class="tablinks" >HOME</button></a>
+</div>
+
+<div id="doctor_info" class="tabcontent" href="dept.html">
+  
+</div>
+
+<div id="patient" class="tabcontent">
+ <div class="form-style-5">
+<form  action="patient.php" method="post" >
+<fieldset>
+<legend><span class="number">1</span>Patient Info</legend>
+<input type="text" name="name" required placeholder="Name"><br>
+<input type="number" name="id" required placeholder="ID"><br>
+ <label><span><b>Gender:</b></span>
+ <input type="radio" name="gender" value="male" required>Male
+ <input type="radio" name="gender" value="female" required>Female</label> <br> 
+  <label><span><b>Date of Birth</b></span></label>
+<input type="date" name="dob" required placeholder="dob"><br>
+<input type="email" name="email" required placeholder="Your Email"><br>
+<input type="number" name="contact" required placeholder="Phone Number"><br>
+<input type="text" name="in_or_out" required placeholder="Type:in or out"><br>
+<input type="text" name="address" required placeholder="Address Line"><br>
+<input type="text" name="gname" required placeholder="Guardian Name"><br>
+<input type="number" name="id_proof" required placeholder="ID Proof"><br>  
+<textarea name="m_concern" rows="10" cols="50" required placeholder="Medical concern"></textarea><br>
+<input type="number" name="doctor_id" required placeholder="Doctor ID"><br>
+<input type="text" name="medicines"  placeholder="Medicines"><br>
+<input type="text" name="tests"  placeholder="Tests"><br>
+<input type="number" name="room_no" placeholder="Room Number"> <br> 
+<label><span><b>Check In</b></span></label>
+<input type="date" name="check_in" placeholder="check_in"><br>
+<label><span><b>Check Out</b></span></label>
+<input type="date" name="check_out" placeholder="check_out"><br>
+<input type="number" name="bill" required placeholder="bill">  <br>
+</fieldset>
+<input type="submit" value="Submit" />
+</form>
+</div>
+</div>
+
+<div id="findpatient" class="tabcontent">
+ <div class="form-style-5">
+<form action="fpatient.php" method="post">
+<fieldset>
+<legend><span class="number">1</span>Find patient</legend>
+<input type="text" name="name" required placeholder="Name"><br>
+<input type="number" name="id" required placeholder="ID"><br>
+</fieldset>
+<input type="submit" value="Submit" />
+</form>
+</div>
+</div>
+
+<div id="home" class="tabcontent" >
+  
+</div>
+
+<script>
+function phar(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+     
+<body>
+</html>
+
+
+

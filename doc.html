@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+	color: black;
+	text-align: left;
+	font-family: Georgia;
+	font-size: 250%;
+}
+
+q {
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+.tabordion {
+	color: #333;
+	display: block;
+	font-family: arial, sans-serif;
+	margin: 45px;
+	position: relative;
+	width: 100%;
+}
+
+.tabordion input[name="sections"] {
+  left: -9999px;
+  position: absolute;
+  top: -9999px;
+}
+
+.tabordion section {
+  display: block;
+  padding-bottom: 74px;
+}
+
+.tabordion section label {
+  background: #ccc;
+  border:1px solid #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px 20px;
+  position: relative;
+  width: 320px;
+  z-index:100;
+}
+
+.tabordion section article {
+  display: none;
+  left: 230px;
+  min-width: 300px;
+  padding: 0 0 0 21px;
+  position: absolute;  
+  top: 0;
+}
+
+.tabordion section article:after {
+  background-color: #ccc;
+  bottom: 0;
+  content: "";
+  display: block;
+  left:-229px;
+  position: absolute;
+  top: 0;
+  width: 220px;
+  z-index:1;
+}
+
+.tabordion input[name="sections"]:checked + label { 
+  background: #eee;
+  color: #bbb;
+}
+
+.tabordion input[name="sections"]:checked ~ article {
+  display: block;
+}
+
+
+@media (max-width: 533px) {
+  
+  h1 {
+    width: 100%;
+  }
+
+  .tabordion {
+    width: 100%;
+  }
+  
+  .tabordion section label {
+    font-size: 1em;
+    width: 160px;
+  }  
+
+ .tabordion section article {
+    left: 200px;
+    min-width: 270px;
+  } 
+  
+  .tabordion section article:after {
+    background-color: #ccc;
+    bottom: 0;
+    content: "";
+    display: block;
+    left:-199px;
+    position: absolute;
+    top: 0;
+    width: 200px;
+
+  }  
+  
+}
+
+#hey {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table#hey td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table#hey tr:nth-child(even) {
+    background-color: #dddddd;
+}
+@media (max-width: 768px) {
+  h1 {
+    width: 96%;
+  }
+
+  .tabordion {
+    width: 96%;
+  }
+}
+
+
+@media (min-width: 1366px) {
+  h1 {
+    width: 70%;
+  }
+
+  .tabordion {
+    width: 70%;
+  }
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    color:white;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header {
+    padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: left;
+    text-align: center;
+    font-variant:small-caps;
+}
+
+
+footer {
+padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: both;
+    text-align: center;
+    position:relative;
+    margin-top:-300px;
+    bottom:0;
+    width:100%;
+    height:300px; 
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00ced1;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 12px;
+    text-decoration: none;
+    font-size:100%;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #000080;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 10000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+table#t {
+width=100%;
+}
+
+table#t th, td {
+    padding: 10px;
+}
+table#t,td{
+	text-align:left;
+}
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+
+table#t01 {
+    width:70%;
+}
+table#t01 th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th {
+    background-color: #008080;
+    color: white;
+}
+#oh input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('sea.jpg');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#oh input[type=text]:focus {
+    width: 15%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+   <h1>
+<img src="logo.gif" alt="Smiley face" style="float:left;width:57px;height:57px;">
+     New Horizons Hospital  
+</h1>
+</header>
+<ul>
+<li class="dropdown">
+    <a href="Homepage.html" class="dropbtn">Home</a>
+</li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">About us</a>
+    <div class="dropdown-content">
+      <a href="aboutus.html">Why Our Hospital</a>
+      <a href="aboutus.html">About Chairman</a>
+      <a href="aboutus.html">Mission & Vision</a>
+      <a href="aboutus.html">Contact Us</a>
+    </div>
+  </li>
+
+<li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Departments & Centers</a>
+    <div class="dropdown-content">
+      <a href="dept.html">Pathology</a>
+      <a href="dept.html">Radiology</a>
+      <a href="dept.html">Gynaecology</a>
+      <a href="dept.html">Neurology</a>
+      <a href="dept.html">Dental</a>
+      <a href="dept.html">Orthopaedics</a>
+      <a href="dept.html">Physiology</a>
+    </div>
+  </li>
+
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Research</a>
+    <div class="dropdown-content">
+      <a href="research.html">Research & Innovations</a>
+      <a href="research.html">Explore Research Labs</a>
+      <a href="research.html">Research Publications</a>
+      <a href="research.html">Research Committees</a>
+    </div>
+  </li>
+
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Services</a>
+    <div class="dropdown-content">
+      <a href="services.html">Hospital Statistics</a>
+      <a href="services.html">Hospital Fees & Charges</a>
+      <a href="services.html">Patient Accommodation</a>
+      <a href="services.html">Emergency</a>
+      <a href="services.html">Blood Bank</a>
+    </div>
+  </li>
+ 
+<li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Patients & Visitors</a>
+    <div class="dropdown-content">
+      <a href="patients.html">Floor Directory</a>
+      <a href="patients.html">Visiting Hours</a>
+      <a href="patients.html">Facilities</a>
+      <a href="patients.html">Feedback</a>
+      <a href="patients.html">Guidelines</a>
+    </div>
+  </li>
+<li class="dropdown">
+    <a href="reception.php" class="dropbtn">Back</a>
+</li>
+<form id="oh">
+  <input type="text" name="search" placeholder="Search" style="float:right">
+</form>
+</ul>
+<p></p>
+
+<div class="tabordion">
+  <section id="section1">
+    <input type="radio" name="sections" id="option1" checked>
+    <label for="option1">Pathology</label>
+    <article>
+<table id="t01">
+<img src="doc2.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Akshay Kekatpure</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>6 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc3.jpg" style="float:right;width:150px;height:120px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Nisha Roy</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>10 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - FRI | 9:00 AM - 5:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<p></p>
+<table id="t01">
+<img src="doc1.png" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Ashok Jha</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>4 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 9:00 AM - 10:00 AM, 5:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+</article>
+ <section id="section2">
+    <input type="radio" name="sections" id="option2" checked>
+    <label for="option2">Radiology</label>
+    <article>
+<table id="t01">
+<img src="doc4.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Hemant Pujari</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>8 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc5.jpg" style="float:right;width:150px;height:120px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Piyush Verma</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>6 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc6.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Sayali Kulkarni</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>15 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+     </article>
+ <section id="section3">
+    <input type="radio" name="sections" id="option3" checked>
+    <label for="option3">Gynaecology</label>
+    <article>
+<table id="t01">
+<img src="doc7.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Shrey Ojha</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>9 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 9:00 AM - 11:00 AM, 4:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc8.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Sandeep Thakur</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>12 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 7:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc9.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Rishi Khanna</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>6 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - WED | 9:00 AM - 10:00 AM, 4:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+     </article>
+<section id="section4">
+    <input type="radio" name="sections" id="option4" checked>
+    <label for="option4">Neurology</label>
+    <article>
+<table id="t01">
+<img src="doc10.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Arpit Satpute</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>10 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>WED - SAT | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc11.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Mihir Grover</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>3 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - TUE | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc12.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Rajani Mittal</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>6 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>THU - SUN | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+ </article>
+<section id="section5">
+    <input type="radio" name="sections" id="option5" checked>
+    <label for="option5">Dental</label>
+    <article>
+<table id="t01">
+<img src="doc13.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Avinash Thakre</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>14 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 7:00 AM - 10:00 AM, 5:00 PM - 6:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc14.png" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Karan Lalwani</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>6 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>TUE - SAT | 9:00 AM - 2:00 PM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc15.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Arun Sarkar</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>2 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 10:00 AM - 3:00 PM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+    </article>
+<section id="section6">
+    <input type="radio" name="sections" id="option6" checked>
+    <label for="option6">Orthopaedics</label>
+    <article>
+<table id="t01">
+<img src="doc16.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Renuka Iyer</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>13 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - FRI | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc17.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Shantanu Shembhalkar</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>12 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc18.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Manvi Mukherjee</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>6 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 3:00 PM - 9:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+    </article>
+<section id="section7">
+    <input type="radio" name="sections" id="option7" checked>
+    <label for="option7">Physiology</label>
+    <article>
+<table id="t01">
+<img src="doc19.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Sagar Yadav</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>11 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc20.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Ajali Singh</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>6 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 1:00 PM - 3:00 PM, 8:00 PM - 10:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+<table id="t01">
+<img src="doc21.jpg" style="float:right;width:150px;height:150px;">
+  <tr>
+    <th>Name</th>
+    <th>Dr. Saksham Rathi</th>
+  </tr>
+  <tr>
+    <td>Qualification</td>
+    <td>MBBS</td>
+  </tr>
+  <tr>
+    <td>Experience</td>
+    <td>5 years</td>
+  </tr>
+  <tr>
+    <td>Timings</td>
+    <td>MON - SAT | 9:00 AM - 10:00 AM, 7:00 PM - 8:00 PM</td>
+  </tr>  
+</table>
+<p></p>
+    </article>
+</section>
+</div>
+
+<footer>
+<table id="t">
+  <tr>
+    <th style="font-size:20px;">Patient care and health information</th>
+    <th  style="font-size:20px;">International Services</th> 
+    <th style="font-size:20px;">For Medical Professionals</th>
+  </tr>
+  <tr>
+    <td style="color:grey;">More than 3,300 physicians, scientists and researchers from New Horizons share their expertise to empower you. Find out why New Horizons is the right place for your health care. </td>
+    <td style="color:grey;">Thousands of people from around the world travel to New Horizons each year for medical care.</td>
+    <td style="color:grey;">Refer a patient. Access medical professional services. Connect to research. Grow and develop with New Horizons.</td>
+  </tr>
+</table>
+<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter40x40.png" border=0></a>
+<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>
+<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
+<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>
+<a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>
+</footer>
+
+</body>
+</html>

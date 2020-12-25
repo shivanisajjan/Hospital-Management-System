@@ -1,0 +1,695 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+	color: black;
+	text-align: left;
+	font-family: Georgia;
+	font-size: 250%;
+}
+p{
+padding-right: 30px;
+float: right;
+}
+q {
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+.tabordion {
+	color: #333;
+	display: block;
+	font-family: arial, sans-serif;
+	margin: 45px;
+	position: relative;
+	width: 100%;
+}
+
+.tabordion input[name="sections"] {
+  left: -9999px;
+  position: absolute;
+  top: -9999px;
+}
+
+.tabordion section {
+  display: block;
+  padding-bottom: 200px;
+}
+
+.tabordion section label {
+  background: #ccc;
+  border:1px solid #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px 20px;
+  position: relative;
+  width: 320px;
+  z-index:100;
+}
+
+.tabordion section article {
+  display: none;
+  left: 230px;
+  min-width: 300px;
+  padding: 0 0 0 21px;
+  position: absolute;  
+  top: 0;
+}
+
+.tabordion section article:after {
+  background-color: #ccc;
+  bottom: 0;
+  content: "";
+  display: block;
+  left:-229px;
+  position: absolute;
+  top: 0;
+  width: 220px;
+  z-index:1;
+}
+
+.tabordion input[name="sections"]:checked + label { 
+  background: #eee;
+  color: #bbb;
+}
+
+.tabordion input[name="sections"]:checked ~ article {
+  display: block;
+}
+
+
+@media (max-width: 533px) {
+  
+  h1 {
+    width: 100%;
+  }
+
+  .tabordion {
+    width: 100%;
+  }
+  
+  .tabordion section label {
+    font-size: 1em;
+    width: 160px;
+  }  
+
+ .tabordion section article {
+    left: 200px;
+    min-width: 270px;
+  } 
+  
+  .tabordion section article:after {
+    background-color: #ccc;
+    bottom: 0;
+    content: "";
+    display: block;
+    left:-199px;
+    position: absolute;
+    top: 0;
+    width: 200px;
+
+  }  
+  
+}
+
+#hey {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table#hey td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table#hey tr:nth-child(even) {
+    background-color: #dddddd;
+}
+@media (max-width: 768px) {
+  h1 {
+    width: 96%;
+  }
+
+  .tabordion {
+    width: 96%;
+  }
+}
+
+
+@media (min-width: 1366px) {
+  h1 {
+    width: 70%;
+  }
+
+  .tabordion {
+    width: 70%;
+  }
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    color:white;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header {
+    padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: left;
+    text-align: center;
+    font-variant:small-caps;
+}
+
+
+footer {
+padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: both;
+    text-align: center;
+    position:relative;
+    margin-top:-300px;
+    bottom:0;
+    width:100%;
+    height:300px; 
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00ced1;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 12px;
+    text-decoration: none;
+    font-size:100%;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #000080;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 10000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+table#t {
+width=100%;
+}
+
+table#t th, td {
+    padding: 10px;
+}
+table#t,td{
+	text-align:left;
+}
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+
+table#t01 {
+    width:100%;
+}
+table#t01 th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th {
+    background-color: #008080;
+    color: white;
+}
+#oh input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('sea.jpg');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#oh input[type=text]:focus {
+    width: 15%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header><p><a href="loginpat.html" style="float:right">Login</a></p>
+   <h1>
+<img src="hospital.png" alt="Smiley face" style="float:left;width:57px;height:57px;">
+     New Horizons Hospital  
+</h1>
+</header>
+<ul>
+<li class="dropdown">
+    <a href="Homepage.html" class="dropbtn">Home</a>
+</li>
+<li class="dropdown">
+    <a href="aboutus.html" class="dropbtn">About us</a>
+</li>
+
+<li class="dropdown">
+    <a href="dept.html" class="dropbtn">Departments & Centers</a>
+</li>
+
+  <li class="dropdown">
+    <a href="research.html" class="dropbtn">Research</a>
+</li>
+<li class="dropdown">
+    <a href="services.html" class="dropbtn">Services</a>
+</li>
+ <li class="dropdown">
+    <a href="patients.html" class="dropbtn">Patients & Visitors</a>
+</li>
+<form id="oh">
+  <input type="text" name="search" placeholder="Search" style="float:right">
+</form>
+</ul>
+<p></p>
+
+<div class="tabordion">
+  <section id="section1">
+    <input type="radio" name="sections" id="option1" checked>
+    <label for="option1">Floor Directory</label>
+    <article>
+<img src="g.jpg" height="400" width="600">
+<table id="t01">
+  <tr>
+    <th>Floor</th>
+    <th>A Wing</th> 
+    <th>Lobby</th>
+    <th>B Wing</th>
+  </tr>
+  <tr>
+    <td>Ground Floor</td>
+    <td>OPD, Dental Clinic, Dermo Cosmetology Clinic, X Ray, Sonography, CT, Nuclear Medicine, PFT, Sample Collection Room, Chemist Shop</td>
+    <td>Admission, Reception, Central Dispatch, TPA, Help Desk</td>
+    <td>Physiotherapy Department, Free OPD
+</td>
+  </tr>
+  <tr>
+    <td>1st Floor</td>
+    <td>Operation Theaters (1,2,3,4,5,6,9,11), Histopathology</td>
+    <td>-</td>
+    <td>Casualty, MRI, Day Care, Operation Theater Suite(7 & 8), Perioperative Care, Endoscopy & Billing, IP Billing & Discharge, Bank
+</td>
+  </tr>
+  <tr>
+    <td>2nd Floor</td>
+    <td>Pathology, Blood Bank</td>
+    <td>Cafeteria</td>
+    <td>ICCU, SICU, Cath Lab (100-132)</td>
+  </tr>
+  <tr>
+    <td>3nd Floor</td>
+    <td>Executive Offices</td>
+    <td>-</td>
+    <td>Administrative Offices</td>
+  </tr>
+  <tr>
+    <td>4th Floor</td>
+    <td>-</td>
+    <td>Refugee Floor</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>5th Floor</td>
+    <td>Bed: 701 — 733</td>
+    <td>-</td>
+    <td>Bed: 734 - 776</td>
+  </tr>
+  <tr>
+    <td>6th Floor</td>
+    <td>Bed: 801 — 833</td>
+    <td>-</td>
+    <td>Bed: 834 — 876</td>
+  </tr>
+  <tr>
+    <td>7th Floor</td>
+    <td>Bed: 901 — 933</td>
+    <td>-</td>
+    <td>Bed: 934 — 976</td>
+  </tr>
+</table>
+
+</article>
+ <section id="section2">
+    <input type="radio" name="sections" id="option2" checked>
+    <label for="option2">Visiting Hours</label>
+    <article>
+<img src="i.jpg" height="300" width="600">
+<table id="t01">
+<tr>
+    <th>Section</th>
+    <th>Monday to Saturday</th> 
+    <th>Sunday</th>
+  </tr>
+<tr>
+    <td>ICU</td>
+    <td>5PM-8PM</td>
+    <td>10AM-11AM | 5PM-8AM</td>
+  </tr>
+<tr>
+    <td>Ward</td>
+    <td>4PM-8PM</td>
+    <td>10AM-11AM | 4PM-8AM</td>
+  </tr>
+</table>
+<p>Visitors can be an important part of the healing process for patients. Family members and friends are welcome to visit. However, since patient care is the primary concern at New Horizons, specific visiting hours have been established in order to enhance the quality of care.</p>
+<p>Patients in the Intensive Care Unit (ICU) must have quiet, non-stimulating extended periods of rest to promote healing. Children below the age of 10 years are not allowed inside the ICU.</p>
+<p>If necessary, please designate a primary and secondary family member as contact persons for ICU personnel to call. Please be aware that no patient information can be given over the telephone. Any information released will be given only to the person(s) designated.</p>
+ <p>To provide the necessary environment for critical care patients, please observe the following:</p>
+<p>1. Visitors as designated by the patient only</p>
+<p>2. Visits by children younger than 12 should be limited based on parental discretion considering the condition of the patient and developmental/emotional readiness of the individual child</p>
+<p>3. No more than two visitors at a time</p>
+<p>4. No flowers or candy and only limited personal items are allowed</p>
+<p>5. No food or drink at the patient’s bedside</p>
+    </article>
+ <section id="section3">
+    <input type="radio" name="sections" id="option3" checked>
+    <label for="option3">Facilities</label>
+    <article>
+<img src="o.jpg" height="350" width="600">
+<h3>CAFETERIA</h3>
+<p>Our cafeteria is located on the 2nd Floor. The meals served here are delicious. It is a convenient option for all visitors to have refreshment within hospital premises at a nominal rate.</p>
+<p>Cafeteria Timing: 7.30 am to 9.30 pm</p>
+<h3>TELEPHONE</h3>
+<p>For patient room</p>
+<p>1st to 4th Floor : Dial 26758 or 26568 followed by bed no. e.g. bed no. 924; Dial 26758924 or 26568924</p>
+<p>5th to 7th Floor : Dial 2675 or 2656 followed by bed no. e.g. bed no. 1104; Dial 26751104 or 26561104)</p>
+<h3>BANK</h3>
+<p>We have an extension counter of the Union Bank within our premises. This makes it more convenient for you to make financial transactions</p>
+<h3>ATM</h3>
+<p>ATM is located near Gate no.2 of the hospital offering variety of banking services.</p>
+<h3>DINING AREA</h3>
+<p>For visitors who carry home cooked food we have a dining area besides the hospital’s pharmacy shop.</p>
+     </article>
+<section id="section4">
+    <input type="radio" name="sections" id="option4" checked>
+    <label for="option4">Feedback</label>
+    <article>
+    <img src="f.jpg" height="180" width="700">
+<form action="/action_page.php">
+  <fieldset>
+    <legend>Personal information:</legend>
+    Name:<br>
+    <input type="text" name="name">
+    <br>
+    E-mail Address:<br>
+    <input type="email" name="emailaddress">
+    <br>
+    Contact Number:<br>
+    <input type="tel" name="contactnumber">
+    <br>
+  </fieldset>
+</form>
+<form action="/action_page.php">
+ <fieldset>
+ <legend>Your views:</legend>
+ Courtesy and friendliness of admission staff.<br>
+<input list="rating1" name="rating1">
+  <datalist id="rating1">
+    <option value="Excellent">
+    <option value="Good">
+    <option value="Average">
+    <option value="Poor">
+  </datalist>
+  <br><br>
+  Time taken to complete admission process.<br>
+  <input list="rating2" name="rating2">
+  <datalist id="rating2">
+    <option value="Excellent">
+    <option value="Good">
+    <option value="Average">
+    <option value="Poor">
+  </datalist>
+  <br><br>
+  Clarity provided about your condition and line of treatment.<br>
+  <input list="rating3" name="rating3">
+  <datalist id="rating3">
+    <option value="Excellent">
+    <option value="Good">
+    <option value="Average">
+    <option value="Poor">
+  </datalist>
+  <br><br>
+  Doctor's efforts to include you in the decision about your treatment.<br>
+  <input list="rating4" name="rating4">
+  <datalist id="rating4">
+    <option value="Excellent">
+    <option value="Good">
+    <option value="Average">
+    <option value="Poor">
+  </datalist>
+  <br><br>
+  Courtesy & friendliness of nursing staff.<br>
+  <input list="rating5" name="rating5">
+  <datalist id="rating5">
+    <option value="Excellent">
+    <option value="Good">
+    <option value="Average">
+    <option value="Poor">
+  </datalist>
+  <br><br>
+  Quality of food and beverage served.<br>
+  <input list="rating6" name="rating6">
+  <datalist id="rating6">
+    <option value="Excellent">
+    <option value="Good">
+    <option value="Average">
+    <option value="Poor">
+  </datalist>
+  <br><br>
+  Cleanliness of the room, toilet & linen.<br>
+  <input list="rating7" name="rating7">
+  <datalist id="rating7">
+    <option value="Excellent">
+    <option value="Good">
+    <option value="Average">
+    <option value="Poor">
+  </datalist>
+  <br><br>
+  Billing counseling (in terms of explanation of charges/ bills).<br>	
+	<input list="rating8" name="rating8">
+  <datalist id="rating8">
+    <option value="Excellent">
+    <option value="Good">
+    <option value="Average">
+    <option value="Poor">
+  </datalist>
+  <br><br>
+  Suggestions:<br>
+  <textarea rows="5" cols="40"></textarea>
+  <br><br>
+  <input type="submit">
+</fieldset>
+</form>
+
+ </article>
+<section id="section5">
+    <input type="radio" name="sections" id="option5" checked>
+    <label for="option5">Guidelines</label>
+    <article>
+<h3>Patient's Rights</h3>
+<p>1. To be informed and educated in a language that you can understand.</p>
+<p>2. To receive medical advice and treatment which fully meets the currently accepted standards of care & quality.</p>
+<p>3. To be given a clear description of your medical condition, estimated cost of treatment and to involve you in decision about your care.</p>
+<p>4. To have information regarding your medical condition kept confidential.</p>
+<p>5. To have information of your care providers.</p>
+<p>6. To have a safe and protected environment for you & your relatives.</p>
+<p>7. To refuse treatment.</p>
+<p>8. Right to seek an additional opinion regarding clinical care.</p>
+<p>9. To have access to your clinical records.</p>
+<p>10. To obtain informed consent from you before any procedure/ surgery/ treatment/ anesthesia/ initiation of any research protocol/ blood & blood product transfusion</p>
+<h3>Patient's Responsibilities</h3>
+<p>1. To provide complete and accurate information including full name, address and other information.</p>
+<p>2. To be on time in case of appointments. To cancel or reschedule as far in advance as possible in case of cancellation or rescheduling of the appointments.</p>
+<p>3. To not give medication prescribed for him/her to others.</p>
+<p>4. To ask questions when he/ she does not understand what the doctor or other member of healthcare team tells about diagnosis or treatment. He/she should also inform the doctor if he/ she anticipates problems in following prescribed treatment or considering alternative therapies.</p>
+<p>5. To pay for services billed for in a timely manner as per the hospital policies.</p>
+<p>6. To respect that some other patients medical condition may be more urgent than yours and accept that your doctor may need to attend them first.</p>
+<p>7. To accept the measures taken by the hospital to ensure personal privacy and confidentiality of medical records.</p>
+    </article>
+</section>
+</div>
+
+<footer>
+<table id="t">
+  <tr>
+    <th style="font-size:20px;">Patient care and health information</th>
+    <th  style="font-size:20px;">International Services</th> 
+    <th style="font-size:20px;">For Medical Professionals</th>
+  </tr>
+  <tr>
+    <td style="color:grey;">More than 3,300 physicians, scientists and researchers from New Horizons share their expertise to empower you. Find out why New Horizons is the right place for your health care. </td>
+    <td style="color:grey;">Thousands of people from around the world travel to New Horizons each year for medical care.</td>
+    <td style="color:grey;">Refer a patient. Access medical professional services. Connect to research. Grow and develop with New Horizons.</td>
+  </tr>
+</table>
+<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter40x40.png" border=0></a>
+<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>
+<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
+<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>
+<a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>
+</footer>
+
+</body>
+</html>

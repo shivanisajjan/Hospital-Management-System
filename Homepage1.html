@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="materialize/materialize.css"/>
+<script src="materialize/materilaize.min.css"></script>
+<link rel="stylesheet" "https://fonts.googleapis.com/css?family=Bertoni+Capitals" >
+<style>
+
+.hdg
+{
+font-size:20px;
+color: #A8CD1B;
+font-family:Bertoni Capitals;
+}
+
+.menu,.dropdown
+{
+	font-family:Roboto
+	font-size: 10px;
+	list-style-type:none;
+	display:inline;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+   <h1>
+<img src="hospital.png" alt="New Horizons Hospital" style="float:left;width:80px;height:80px;font-family:Verdana;"><ul class=".left-align" style="list-style-type:none;"><li class = "hdg">NEW</li><li class = "hdg">HORIZONS</li><li class = "hdg">HOSPITAL</li></ul>
+
+</header>
+<ul class="menu">
+<li class="dropdown">
+    <a href="Homepage.html" class="dropbtn">Home</a>
+</li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">About us</a>
+    <div class="dropdown-content">
+      <a href="aboutus.html">Why Our Hospital</a>
+      <a href="aboutus.html">About Chairman</a>
+      <a href="aboutus.html">Mission & Vision</a>
+      <a href="aboutus.html">Contact Us</a>
+    </div>
+  </li>
+
+<li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Departments & Centers</a>
+    <div class="dropdown-content">
+      <a href="dept.html">Pathology</a>
+      <a href="dept.html">Radiology</a>
+      <a href="dept.html">Gynaecology</a>
+      <a href="dept.html">Neurology</a>
+      <a href="dept.html">Dental</a>
+      <a href="dept.html">Orthopaedics</a>
+      <a href="dept.html">Physiology</a>
+    </div>
+  </li>
+
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Research</a>
+    <div class="dropdown-content">
+      <a href="research.html">Research & Innovations</a>
+      <a href="research.html">Explore Research Labs</a>
+      <a href="research.html">Research Publications</a>
+      <a href="research.html">Research Committees</a>
+    </div>
+  </li>
+
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Services</a>
+    <div class="dropdown-content">
+      <a href="services.html">Hospital Statistics</a>
+      <a href="services.html">Hospital Fees & Charges</a>
+      <a href="services.html">Patient Accommodation</a>
+      <a href="services.html">Emergency</a>
+      <a href="services.html">Blood Bank</a>
+    </div>
+  </li>
+ 
+<li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Patients & Visitors</a>
+    <div class="dropdown-content">
+      <a href="patients.html">Floor Directory</a>
+      <a href="patients.html">Visiting Hours</a>
+      <a href="patients.html">Facilities</a>
+      <a href="patients.html">Feedback</a>
+      <a href="patients.html">Guidelines</a>
+    </div>
+  </li>
+
+<form id="oh">
+  <input type="text" name="search" placeholder="Search" style="float:right">
+</form>
+
+</ul>
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 5</div>
+  <img src="a.jpg" width="1325" height="600">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 5</div>
+  <img src="c.jpg" width="1325" height="600">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 5</div>
+  <img src="b.jpg" width="1325" height="600">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 5</div>
+  <img src="d.jpg" width="1325" height="600">
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">5/ 5</div>
+  <img src="e.jpg" width="1325" height="500">
+</div>
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+   <span class="dot"></span> 
+   <span class="dot"></span> 
+</div>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+</script>
+
+<q>
+
+<div id="myNav" class="overlay">
+  <a href="Homepage.html" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+     <form action="insertprint.php" method="post">
+       Name:<br>
+  <input type="text" name="name" required>
+  <br><br>
+     Address:<br>
+  <input type="text" name="address" required>
+  <br>
+    Gender:<br>
+&nbsp &nbsp;
+   <input type="radio" name="gender" value="male" checked> Male<br>
+   &nbsp &nbsp &nbsp &nbsp;
+   <input type="radio" name="gender" value="female"> Female<br>
+   &nbsp &nbsp;
+   <input type="radio" name="gender" value="other"> Other<br>
+    Phone:<br>
+   <input type="tel" name="contact" required>
+<br>
+<br>
+    E-mail:<br>
+   <input type="email" name="email" required>
+<br>
+<br>
+    Date of birth:<br>
+   <input type="date" name="dob" required>
+<br>
+<br>
+Guardian's Name:<br>
+<input type="text" name="gname" required>
+<br><br>
+Medical Concern:<br>
+<textarea rows="10" cols="30" name="m_concern"></textarea>
+<br><br>
+Doctor's Name:<br>
+ <input type="text" name="doctorname">
+ <br><br>
+ID Proof:<br>
+ <input type="text" name="id_proof" required>
+ <br><br>
+ Date:<br>
+ <input type="date" name="date">
+ <br><br>
+ Time:<br>
+ <input type="time" name="time">
+ <br><br>
+<input type="submit" name="submit" value="Submit">
+
+</form>
+     </form>
+  </div>
+</div>
+<span style="font-size:25px;cursor:pointer" onclick="openNav()"><b>Book An Appointment</b></span>
+
+
+<script>
+function openNav() {
+    document.getElementById("myNav").style.width = "40%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>
+</q>
+ <p></p>
+
+
+<footer>
+<table style="width:100%">
+  <tr>
+    <th style="font-size:20px;">Patient care and health information</th>
+    <th  style="font-size:20px;">International Services</th> 
+    <th style="font-size:20px;">For Medical Professionals</th>
+  </tr>
+  <tr>
+    <td style="color:grey;">More than 3,300 physicians, scientists and researchers from New Horizons share their expertise to empower you. Find out why New Horizons is the right place for your health care. </td>
+    <td style="color:grey;">Thousands of people from around the world travel to New Horizons each year for medical care.</td>
+    <td style="color:grey;">Refer a patient. Access medical professional services. Connect to research. Grow and develop with New Horizons.</td>
+  </tr>
+</table>
+<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter40x40.png" border=0></a>
+<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>
+<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
+<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>
+<a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>
+</footer>
+
+</body>
+</html>

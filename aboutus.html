@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+	color: black;
+	text-align: left;
+	font-family: Georgia;
+	font-size: 250%;
+}
+
+q {
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+.tabordion {
+	color: #333;
+	display: block;
+	font-family: arial, sans-serif;
+	margin: 45px;
+	position: relative;
+	width: 100%;
+}
+
+.tabordion input[name="sections"] {
+  left: -9999px;
+  position: absolute;
+  top: -9999px;
+}
+
+.tabordion section {
+  display: block;
+  padding-bottom: 110px;
+}
+
+.tabordion section label {
+  background: #ccc;
+  border:1px solid #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px 20px;
+  position: relative;
+  width: 320px;
+  z-index:100;
+}
+
+.tabordion section article {
+  display: none;
+  left: 290px;
+  min-width: 300px;
+  padding: 0 0 0 21px;
+  position: absolute;  
+  top: 0;
+}
+
+.tabordion section article:after {
+  background-color: #ccc;
+  bottom: 0;
+  content: "";
+  display: block;
+  left:-229px;
+  position: absolute;
+  top: 0;
+  width: 220px;
+  z-index:1;
+}
+
+.tabordion input[name="sections"]:checked + label { 
+  background: #eee;
+  color: #bbb;
+}
+
+.tabordion input[name="sections"]:checked ~ article {
+  display: block;
+}
+
+
+@media (max-width: 533px) {
+  
+  h1 {
+    width: 100%;
+  }
+
+  .tabordion {
+    width: 100%;
+  }
+  
+  .tabordion section label {
+    font-size: 1em;
+    width: 160px;
+  }  
+
+ .tabordion section article {
+    left: 200px;
+    min-width: 270px;
+  } 
+  
+  .tabordion section article:after {
+    background-color: #ccc;
+    bottom: 0;
+    content: "";
+    display: block;
+    left:-199px;
+    position: absolute;
+    top: 0;
+    width: 200px;
+
+  }  
+  
+}
+
+#hey {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table#hey td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table#hey tr:nth-child(even) {
+    background-color: #dddddd;
+}
+@media (max-width: 768px) {
+  h1 {
+    width: 96%;
+  }
+
+  .tabordion {
+    width: 96%;
+  }
+}
+
+
+@media (min-width: 1366px) {
+  h1 {
+    width: 70%;
+  }
+
+  .tabordion {
+    width: 70%;
+  }
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    color:white;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header {
+    padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: left;
+    text-align: center;
+    font-variant:small-caps;
+}
+
+
+footer {
+padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: both;
+    text-align: center;
+    position:relative;
+    margin-top:-300px;
+    bottom:0;
+    width:100%;
+    height:300px; 
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00ced1;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 12px;
+    text-decoration: none;
+    font-size:100%;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #000080;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 10000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+}
+table,td{
+	text-align:left;
+}
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+#oh input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('sea.jpg');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#oh input[type=text]:focus {
+    width: 15%;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+<header><a href="loginpat.html" style="float:right">Login</a>
+   <h1>
+<img src="hospital.png" alt="Smiley face" style="float:left;width:57px;height:57px;">
+     New Horizons Hospital  
+</h1>
+</header>
+<ul>
+<li class="dropdown">
+    <a href="Homepage.html" class="dropbtn">Home</a>
+
+</li>
+<li class="dropdown">
+    <a href="aboutus.html" class="dropbtn">About us</a>
+</li>
+
+<li class="dropdown">
+    <a href="dept.html" class="dropbtn">Departments & Centers</a>
+</li>
+
+  <li class="dropdown">
+    <a href="research.html" class="dropbtn">Research</a>
+</li>
+<li class="dropdown">
+    <a href="services.html" class="dropbtn">Services</a>
+</li>
+ <li class="dropdown">
+    <a href="patients.html" class="dropbtn">Patients & Visitors</a>
+</li>
+<form id="oh">
+  <input type="text" name="search" placeholder="Search" style="float:right">
+</form>
+</ul>
+
+<div class="tabordion">
+  <section id="section1">
+    <input type="radio" name="sections" id="option1" checked>
+    <label for="option1">Why Our Hospital</label>
+    <article>
+      <h2>New Horizons Hospital & Research Center</h2>
+<p>The premier multi-specialty tertiary care hospital of India has been acknowledged globally as centre of medical excellence. The kind of confidence, trust it has developed on strong foundation of the state-of-the-art facilities, best medical expertise, research, education and charitable endeavors; that today it serves patients from all walks of life – national and international. Based on a powerful Sanskrit inspiration, “Sarvetra Sukhina:Santu, Sarve SantuNiramaya:” which means “Let all be blissful, Let all stay healthy”, the hospital has focused its operation on providing quality care with a human touch; which truly reflects the essence of its motto “More than Healthcare, Human Care”.</p>
+<p>The hospital is located in the heart of Mumbai; and is very close to the domestic and the international airport.The hospital started functioning in 1997 with 10 beds and initially had only 22 doctors. Today, it boasts of 323 beds with one of the largest Intensive Care Units (ICUs), most advanced 12 Operation Theaters, more than 300 consultants and manpower of nearly 1,800.Hospital attends to around 300 In-patients and 1,500 Out-patients daily.</p>
+ <p>The hospital is committed to providing the highest quality medical care. Our mission — to inspire hope and contribute to health and well-being by providing the best care to every patient through integrated clinical practice, education and research — captures what the organization has stood for throughout its history. The patient is the focus of everything we do.
+
+In its earliest days, one of Mayo Clinic's founders, Dr. William J. Mayo, stated, "The best interest of the patient is the only interest to be considered." That primary value — the needs of the patient come first — has guided Horizon's practice throughout its history and at every Mayo site.
+
+Our organizational priorities are aimed at ensuring that our patient focus permeates the entire organization, in every department at every location.</p>
+<p>The hospital and its staff often collaborate with industry to improve patient care through research agreements, invention licenses and consulting activities. The New Horizons Conflict of Interest Review Board oversees all such activities.Our staff members do not receive any royalties for inventions or technology developed at New Horizons and subsequently prescribed for our patients.
+     </article>
+ <section id="section2">
+    <input type="radio" name="sections" id="option2" checked>
+    <label for="option2">About Chairman</label>
+    <article>
+    <img src="chairman.jpg" height="500" width="700">
+    <p>Dr. Prathap C Reddy, the visionary Founder-Chairman of New Horizon Hospital is widely recognized as the architect of modern Indian healthcare. He is best described as a compassionate humanitarian, who has dedicated his life to bringing world-class healthcare within the economic and geographic reach of millions. The institution that he envisioned and built - New Horizon Hospitals, steered a revolution and marked the birth of the private healthcare industry in India.</p>
+    <p>New Horizon Hospital opened its doors in 1983 and introduced international quality healthcare to India, at a cost that was a fraction of comparable costs in the western world. This was Horizon's first act of social responsibility and underscored the fact that the organization's business model has an intrinsic social conscience.</p>
+    <p>Over the years, Dr. Reddy has carried the torch of healthcare to distant corners of India. Always the visionary, he harnessed technology and insurance to take healthcare to the masses. The pioneering success of telemedicine and innovative insurance in Aragonda, the world's first V-SAT enabled village in remote Andhra Pradesh validates the concept of 'Healthcare for All'.</p>
+    <p>Recognizing that telemedicine can help meet the increasing demand for universal access to high quality healthcare, Apollo Hospitals established telemedicine centres across the world. Dr. Reddy also envisioned the path breaking Apollo Reach Hospitals model, one that takes high quality healthcare to semi urban and rural geographies. This blueprint has been taking good health to the very heart of India.</p>
+</article>
+ <section id="section3">
+    <input type="radio" name="sections" id="option3" checked>
+    <label for="option3">Mission & Vision</label>
+    <article>
+    <h2>Our Vision</h2>
+     <p>Over the past three decades, New Horizon's transformative journey has forged a legacy of excellence in Indian healthcare. One of Horizon's significant contributions has been the adoption of clinical excellence as an industry standard. Alongside, its ethos rests on the pillars of technological superiority, a warm patient - centric approach, affordable costs and an edge in forward-looking research and academics.</p>
+     <p>An early adopter of technology, New Horizon Hospital was one among the first few in the world to leverage technology to build integrated healthcare delivery models, which facilitate seamless healthcare delivery through electronic medical records, hospital information systems and telemedicine-based outreach initiatives. Another critical manifestation of widespread technology has been the amazing advancement in medical equipment and Horizon has repeatedly pioneered the introduction of such innovations in India. Soon the country will have its very first Proton Beam Therapy centre at New Horizon Cancer Hospitals.</p>
+     <p>New Horizon seeks to be a model for health systems in India through innovations in education, patient-oriented research, population health and service excellence.</p>
+<h2>Our Mission</h2>
+    <p>"Our mission is to bring healthcare of International standards within the reach of every individual. We are committed to the achievement and maintenance of excellence in education, research and healthcare for the benefit of humanity"</p>
+    <p>To develop compassionate, ethically sound health professionals and provide service of the highest order across the health care continuum, through</p>
+    <p>1. Innovations in education that yield lifelong learners and leaders in health care.</p>
+    <p>2. Original research in basic sciences and patient oriented discoveries.</p>
+    <p>3. Encouraging creative young minds to reach their fullest potential.</p>
+    <p>4. Clinical transformation across the organization that is patient centered, safe, effective, accountable and transparent.</p>
+    <p>5. Emphasis on quality and value in all endeavours.</p>
+    <p>6. Partnerships with organizations encompassing congruent ideals.</p>
+    <p>7. Advocacy for community wellness and public health with a focus on socio-economic disparities.</p>
+</article>
+<section id="section4">
+    <input type="radio" name="sections" id="option4" checked>
+    <label for="option4">Contact Us</label>
+    <article>
+     <h2>Contact Numbers</h2>
+<table id="hey">
+  <tr>
+   <td>General Number</td>
+   <td>904-953-2000</td>
+  </tr>
+  <tr>
+    <td>Reception</td>
+    <td>904-953-2000</td>
+  </tr>
+  <tr>
+    <td>Appointment Office</td>
+    <td>904-953-0853</td>
+  </tr>
+  <tr>
+    <td>Insurance</td>
+    <td>904-953-2272</td>
+  </tr>
+  <tr>
+    <td>Billing</td>
+    <td>904-953-7058</td>
+  </tr>
+  <tr>
+    <td>Pharmacy</td>
+    <td>904-953-2093</td>
+  </tr>
+  <tr>
+     <td>Ambulance</td>
+     <td>98219-444111</td>
+  </tr>
+  <tr>
+    <td>Blood Bank</td>
+    <td>9034-959023-7058</td>
+  </tr>
+  <tr>
+    <td>Sample Collection</td>
+    <td>904-789-2693</td>
+  </tr>
+  <tr>
+     <td>Report Colletion</td>
+     <td>98200-874111</td>
+  </tr>
+  <tr>
+    <td>Physiotherapy</td>
+    <td>904-95123-7058</td>
+  </tr>
+  <tr>
+    <td>MRI Department</td>
+    <td>904-953-209123</td>
+  </tr>
+  <tr>
+     <td>Endoscopy</td>
+     <td>98219-40811</td>
+  </tr>
+  <tr>
+    <td>Dental</td>
+    <td>904-90000-7058</td>
+  </tr>
+  <tr>
+    <td>EMG/EEG</td>
+    <td>904-953-24333</td>
+  </tr>
+  <tr>
+     <td>CT Scan Department</td>
+     <td>98219-98192</td>
+  </tr>
+</table>
+<h2>Fax Numbers</h2>
+<table id="hey">
+  <tr>
+   <td>General Purpose</td>
+   <td>904-95123-20071620</td>
+  </tr>
+  <tr>
+    <td>Official Purpose</td>
+    <td>904-91353-200120</td>
+  </tr>
+</table>
+<h2>E-mail IDs</h2>
+<table id="hey">
+  <tr>
+   <td>General Purpose</td>
+   <td>horizon.general@gmail.com</td>
+  </tr>
+  <tr>
+    <td>Official Purpose</td>
+    <td>horizon.official@gmail.com</td>
+  </tr>
+  <tr>
+   <td>Grievances</td>
+   <td>horizon.feedback@rediffmail.com</td>
+  </tr>
+  <tr>
+    <td>Queries</td>
+    <td>horizon.queries@gmail.com</td>
+  </tr>
+</table>
+<h2>Address</h2>
+<p>A-791, Bandra Reclamation, Bandra (W), Mumbai - 400050. India.</p>
+</article>
+<p></p>
+<img src="m.jpg" height="800" width="380">
+
+</section>
+</div>
+
+<footer>
+<table style="width:100%">
+  <tr>
+    <th style="font-size:20px;">Patient care and health information</th>
+    <th  style="font-size:20px;">International Services</th> 
+    <th style="font-size:20px;">For Medical Professionals</th>
+  </tr>
+  <tr>
+    <td style="color:grey;">More than 3,300 physicians, scientists and researchers from New Horizons share their expertise to empower you. Find out why New Horizons is the right place for your health care. </td>
+    <td style="color:grey;">Thousands of people from around the world travel to New Horizons each year for medical care.</td>
+    <td style="color:grey;">Refer a patient. Access medical professional services. Connect to research. Grow and develop with New Horizons.</td>
+  </tr>
+</table>
+<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter40x40.png" border=0></a>
+<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>
+<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
+<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>
+<a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>
+</footer>
+
+</body>
+</html>

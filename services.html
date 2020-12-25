@@ -1,0 +1,663 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+	color: black;
+	text-align: left;
+	font-family: Georgia;
+	font-size: 250%;
+}
+p{
+padding-right: 30px;
+float: right;
+}
+q {
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+.tabordion {
+	color: #333;
+	display: block;
+	font-family: arial, sans-serif;
+	margin: 45px;
+	position: relative;
+	width: 100%;
+}
+
+.tabordion input[name="sections"] {
+  left: -9999px;
+  position: absolute;
+  top: -9999px;
+}
+
+.tabordion section {
+  display: block;
+  padding-bottom: 200px;
+}
+
+.tabordion section label {
+  background: #ccc;
+  border:1px solid #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px 20px;
+  position: relative;
+  width: 320px;
+  z-index:100;
+}
+
+.tabordion section article {
+  display: none;
+  left: 230px;
+  min-width: 300px;
+  padding: 0 0 0 21px;
+  position: absolute;  
+  top: 0;
+}
+
+.tabordion section article:after {
+  background-color: #ccc;
+  bottom: 0;
+  content: "";
+  display: block;
+  left:-229px;
+  position: absolute;
+  top: 0;
+  width: 220px;
+  z-index:1;
+}
+
+.tabordion input[name="sections"]:checked + label { 
+  background: #eee;
+  color: #bbb;
+}
+
+.tabordion input[name="sections"]:checked ~ article {
+  display: block;
+}
+
+
+@media (max-width: 533px) {
+  
+  h1 {
+    width: 100%;
+  }
+
+  .tabordion {
+    width: 100%;
+  }
+  
+  .tabordion section label {
+    font-size: 1em;
+    width: 160px;
+  }  
+
+ .tabordion section article {
+    left: 200px;
+    min-width: 270px;
+  } 
+  
+  .tabordion section article:after {
+    background-color: #ccc;
+    bottom: 0;
+    content: "";
+    display: block;
+    left:-199px;
+    position: absolute;
+    top: 0;
+    width: 200px;
+
+  }  
+  
+}
+
+
+@media (max-width: 768px) {
+  h1 {
+    width: 96%;
+  }
+
+  .tabordion {
+    width: 96%;
+  }
+}
+#hey {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table#hey td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table#hey tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+@media (min-width: 1366px) {
+  h1 {
+    width: 70%;
+  }
+
+  .tabordion {
+    width: 70%;
+  }
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    color:white;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header {
+    padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: left;
+    text-align: center;
+    font-variant:small-caps;
+}
+
+
+footer {
+padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: both;
+    text-align: center;
+    position:relative;
+    margin-top:-300px;
+    bottom:0;
+    width:100%;
+    height:300px; 
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00ced1;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 12px;
+    text-decoration: none;
+    font-size:100%;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #000080;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 10000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+table#t {
+width=100%;
+}
+
+table#t th, td {
+    padding: 10px;
+}
+table#t,td{
+	text-align:left;
+}
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+table#t02, th, td {
+    border: 1px solid black;
+}
+#oh input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('sea.jpg');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#oh input[type=text]:focus {
+    width: 15%;
+}
+table#t01 {
+    width:70%;
+}
+table#t01 th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th {
+    background-color: #008080;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header><a href="loginpat.html" style="float:right">Login</a>
+   <h1>
+<img src="hospital.png" alt="Smiley face" style="float:left;width:57px;height:57px;">
+     New Horizons Hospital  
+</h1>
+</header>
+<ul>
+<li class="dropdown">
+    <a href="Homepage.html" class="dropbtn">Home</a>
+</li>
+<li class="dropdown">
+    <a href="aboutus.html" class="dropbtn">About us</a>
+</li>
+
+<li class="dropdown">
+    <a href="dept.html" class="dropbtn">Departments & Centers</a>
+</li>
+
+  <li class="dropdown">
+    <a href="research.html" class="dropbtn">Research</a>
+</li>
+<li class="dropdown">
+    <a href="services.html" class="dropbtn">Services</a>
+</li>
+ <li class="dropdown">
+    <a href="patients.html" class="dropbtn">Patients & Visitors</a>
+</li>
+<form id="oh">
+  <input type="text" name="search" placeholder="Search" style="float:right">
+</form>
+</ul>
+<p></p>
+<div class="tabordion">
+  <section id="section1" >
+    <input type="radio" name="sections" id="option1" checked>
+    <label for="option1">Hospital Statistics</label>
+    <article>
+	<br>
+	<br>
+	<h2>HOSPITAL STATISTICS</h2>
+	<br>
+	<br>
+      <table id="t01" style="width:100%;">
+  <tr>
+    <th>S No.</th>
+    <th>Details</th> 
+    <th>No. Of Patients</th>
+  </tr>
+  <tr>
+    <td>1.</td>
+    <td>Total No. of outpatient attendance</td>
+    <td>20,70,536</td>
+  </tr>
+  <tr>
+    <td>2.</td>
+    <td>Total No. of old cases</td>
+    <td>15,14,861</td>
+  </tr>
+  <tr>
+    <td>3.</td>
+    <td>Total No. of new cases</td>
+    <td>5,55,675</td>
+  </tr>
+  <tr>
+    <td>4.</td>
+    <td>Daily Average no. of outpatient attendance</td>
+    <td>7015</td>
+    <tr>
+    <td>5.</td>
+    <td>Total no. of outpatient attendance in casualties</td>
+    <td>22,3861</td>
+    <tr>
+    <td>6.</td>
+    <td>Daily Average no. of outpatient attendance in casualties</td>
+    <td>861</td>
+    <tr>
+    <td>7.</td>
+    <td>No. of outpatient attendance in main casualty</td>
+    <td>2,14,861</td>
+    <tr>
+    <td>8.</td>
+    <td>Total no. of admissions</td>
+    <td>84,861</td>
+    <tr>
+    <td>9.</td>
+    <td>Total no. of discharges</td>
+    <td>84,391</td>
+    <tr>
+    <td>10.</td>
+    <td>Daily average bed occupancy rate</td>
+    <td>87%</td>
+    </tr>
+    <tr>
+    <td>11.</td>
+    <td>No. of live births</td>
+    <td>14861</td>
+    </tr>
+	<td>12.</td>
+    <td>Total no. of investigations</td>
+    <td>42,07,264</td>
+    </tr>
+	<td>13.</td>
+    <td>No. of investigations in pathology</td>
+    <td>486182</td>
+    </tr>
+	<td>14.</td>
+    <td>Total no. of operations performed</td>
+    <td>43866</td>
+    </tr>
+	<td>15.</td>
+    <td>Total no. of deaths</td>
+    <td>2861</td>
+    </tr>
+	
+</table>
+     </article>
+ <section id="section2">
+    <input type="radio" name="sections" id="option2" checked>
+    <label for="option2">Hospital Fees & Charges</label>
+    <article>
+    <h2>Hospital Fees & Charges </h2>
+<h3>General patients:</h3>
+<p>No charges are levied for outpatient or inpatient investigations and treatment for patients with monthly income less than Rs. 2500.</p>
+<h3>Cancer patients :</h3>
+<p>All cancer therapy will be free irrespective of income.</p>
+<h3>Dental patients:</h3>
+<p>Dental charges will be levied for all OPD patients irrespective of income.</p>
+<h3>Special ward patients:</h3>
+<p>Patients in special wards will be charged for radiological examination, other investigations and clinical procedures as per the listed charges (link). A and B class special ward patients will pay full charges, while patients in C class wards will pay 50% of the charges.
+Â </p>
+<h3>For Students, C.H.S. and Junior Residents:</h3>
+<p>Students of JIPMERÂ  and Compulsory House Surgeons will be eligible for class CÂ  accommodation and no charges (including diet) would be made. Junior Residents will be entitled to free treatment in C except diet charges.
+</p>
+<h3>For Staff and Senior Residents:</h3>
+<p>No charges will be made to the staff of JIPMER including Senior Residents and their families as per C.S. (M.A.) Rules, 1944 as amended from the time.
+Those covered under CGHS/Serving defence personnel including NCC be eligible for free treatment except diet.</p>
+<h3>For Freedom Fighters:</h3>
+<p>Freedom fighters of central pensioner and their dependents are eligible for the same facilities applicable to Group A Officers.</p>
+<h3>Green Card Holders:</h3>
+<p>Green Card holders under the Family PlanningÂ  ProgrammeÂ  are eligible for free treatment in C class beds.</p>
+<h3>For Government servants </h3>
+<p>Institute staff and other Government servants are entitled for admission to the various categories as follows</p>
+Â Â Â Â Â Â Â Â Â Â Â  <p>C Ward  Basic pay from 2550 to Rs.5499</p><br>
+Â Â Â Â Â Â Â Â Â Â Â  <p>B Ward  Basic pay from 5500 to Rs.7999</p><br>
+Â Â Â Â Â Â Â Â Â Â Â  <p>A Ward  Basic pay from 8000 and above</p><br>
+</article>
+ <section id="section3">
+    <input type="radio" name="sections" id="option3" checked>
+    <label for="option3">Patient Accommodation</label>
+    <article>
+	<h2>COMMON</h2>
+    <img src="common.jpg" width="100%" height="300px">
+<p>Number of Beds/ Room : Six patients per room<br>
+Toilet & Washroom : Shared Facility outside the room<br>
+Bed for Attendant : Not Available<br>
+Sofa Set/ Chairs : One Chair<br>
+Type of Bed for patients : Manually Operated<br>
+Television : Not Available<br>
+Telephone : One Telephone for Six patients<br>
+Refrigerator : Not Available<br>
+No. of Passes : 24 Hrs 1 Pass and Visiting Hrs 1 Pass<br>
+Internet Access : No</p>
+<h2>ECONOMY</h2>
+<img src="eco.jpg" width="100%" height="300px">
+<p>Number of Beds/ Room : Three patients per room<br>
+Toilet & Washroom : Attached Toilet-cum-Bath<br>
+Bed for Attendant : Not Available<br>
+Sofa Set/ Chairs : Easy Chair<br>
+Type of Bed for patients : Manually Operated<br>
+Television : Not Available<br>
+Telephone : Two Telephones for Three patients<br>
+Refrigerator : Not Available<br>
+No. of Passes : 24 Hrs  1 Pass and Visiting Hrs 1 Pass<br>
+Internet Access : No</p>
+<h2>DELUXE</h2>
+<img src="del.jpg" width="100%" height="300px">
+<p>Number of Beds/ Room : One patient per room + additional room for visitors <br>
+Toilet & Washroom : Attached Toilet-cum-Bath <br>
+Bed for Attendant : Available <br>
+Sofa Set/ Chairs : 4 Chairs <br>
+Type of Bed for patients : Electrically Operated<br>
+Television : 2 Plasma + 1 VCD player<br>
+Telephone : 2 Nos. Available<br>
+Refrigerator : Available<br>
+No. of Passes : 24 Hrs 2 Pass & Visiting Hrs 3 Pass<br>
+Internet Access : On Request</p>
+</article>
+<section id="section4">
+    <input type="radio" name="sections" id="option4" checked>
+    <label for="option4">Emergency</label>
+    <article>
+     <h2>Emergency</h2>
+<img src="ambul.jpg" width="100%" height="300px">
+<h2>Overview</h2>
+<p>State-of-the-art Ambulances at our hospital are equipped to handle most complex emergencies and are available to our patients round the clock.
+<br>These ambulances carry standard equipments like ventilator, Defibrillator, Oxygen, suction, scoop stretcher, spine board, head immobilizer, spencer trolley stretcher and all the other lifesaving drugs.
+<br>These ambulances are manned by ALS / BLS trained Doctors, Nurses along with trained Drivers and Attendants, all are well trained in managing emergencies in their respective fields</p>
+<h2>Types of Ambulance</h2>
+<img src="ambula.jpg" width="100%" height="300px">
+<p>To ensure that we meet different needs ranging from fracture to cardiac emergencies we have following ambulance services<br>
+Cardiac Ambulance<br>
+Trauma Ambulance</p>
+<h2>Area Coverage</h2>
+<p>Western side upto Virar<br>
+Harbour side  upto Panvel<br>
+Central side  upto Kalyan</p>
+<h2>Request Ambulance</h2>
+<img src="am.jpg" width="100%" height="300px">
+<p>A request for ambulance can be made on payment basis on the following numbers<br>
+Ambulance staff  09769250010 Â /Â  07506358779<br>
+Hospital shall not be responsible for following<br>
+Technical problem/ failure of equipment/ breakdown of ambulance<br>
+Any traffic jam, wrong address given & deadline to reach the destination<br>
+Conditions apply</p>
+</article>
+<section id="section5">
+    <input type="radio" name="sections" id="option5" checked>
+    <label for="option5">Blood Bank</label>
+    <article>
+	<h2>BLOOD BANK</h2>
+	<img src="bl.jpg" height="300px" width="100%">
+	<p>Blood bank caters to all patients including out-patients. We receive blood from 6000 donors every year. A system of credit-debit with other blood banks which are part of Federation of Bombay Blood Banks, works out when there is excess availability at our end. <br>Likewise, we receive blood from other banks whenever there is a shortage. This goes a long way in supporting the lives of several patients who need blood urgently. The Blood Bank caters to all the needs of the inpatients and out patients of the Hospital.
+We have strict quality control measures for the blood bank and ensure the right blood type is supplied after thorough testing. The blood collected from donors is split in to various components - packed red cells, fresh frozen plasma, cryo depleted plasma, platelet concentrate, single donor platelets and cryoprecipitate of all the blood groups is on shelf. <br>The donor bleeding hours is from 9 a.m. to 5 p.m. every day.
+There is a constant effort to encourage and motivate patients and relatives of patients to donate blood at our blood bank. Not only this, we conduct blood donation drives and camps from time to time to voluntarily collect blood from donors. <br>In times of natural disaster or any other crisis in the city, we strive to reach out and help any citizen who maybe in urgent need of blood for survival.
+The Blood Bank performs all the prescribed tests for testing each unit before issue to the patient.<br>
+The blood bank is inspected and audited by the FDA (Food and Drug Administration) who has laid down standards for management of blood banks.<br>
+For details contact   91-022-26568214 / 8215</p>
+<h2>Professionals</h2>
+<img src="p1.jpg" height="200" width="160">
+<h3>Dr.Fatima Y.Rangvalla</h3>
+<p>Dr. Rangwala has been associated with New Horizon Hospital for 6 Years. She has an overall experience of 8 years. Her key achievements include being NABL and NABB auditor & presentations in multiple National and International conferences and CMEs.
+<br>
+Area Of Interest<br>
+Hematology<br>
+Biochemistry<br>
+Immunology<br>
+Transfusion Medicine</p>
+<img src="blood.jpg" height="300px" width="100%">
+</article>
+</section>
+<img src="m.jpg" height="800" width="380">
+</div>
+
+<footer>
+<table id="t">
+  <tr>
+    <th style="font-size:20px;">Patient care and health information</th>
+    <th  style="font-size:20px;">International Services</th> 
+    <th style="font-size:20px;">For Medical Professionals</th>
+  </tr>
+  <tr>
+    <td style="color:grey;">More than 3,300 physicians, scientists and researchers from New Horizons share their expertise to empower you. Find out why New Horizons is the right place for your health care. </td>
+    <td style="color:grey;">Thousands of people from around the world travel to New Horizons each year for medical care.</td>
+    <td style="color:grey;">Refer a patient. Access medical professional services. Connect to research. Grow and develop with New Horizons.</td>
+  </tr>
+</tr>
+</table>
+<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter40x40.png" border=0></a>
+<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>
+<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
+<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>
+<a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>
+</footer>
+
+</body>
+</html>

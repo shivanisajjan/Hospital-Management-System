@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+   <h1>
+<img src="logo.gif" alt="Smiley face" style="float:left;width:57px;height:57px;">
+     New Horizons Hospital  
+</h1>
+</header>
+<ul>
+
+<li class="dropdown">
+    <a href="Homepage.html" class="dropbtn">Home</a>
+</li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">About us</a>
+    <div class="dropdown-content">
+      <a href="aboutus.html">Why Our Hospital</a>
+      <a href="aboutus.html">About Chairman</a>
+      <a href="aboutus.html">Mission & Vision</a>
+      <a href="aboutus.html">Contact Us</a>
+    </div>
+  </li>
+
+<li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Departments & Centers</a>
+    <div class="dropdown-content">
+      <a href="dept.php">Pathology</a>
+      <a href="dept.php">Radiology</a>
+      <a href="dept.php">Gynaecology</a>
+      <a href="dept.php">Neurology</a>
+      <a href="dept.php">Dental</a>
+      <a href="dept.php">Orthopaedics</a>
+      <a href="dept.php">Physiology</a>
+    </div>
+  </li>
+
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Research</a>
+    <div class="dropdown-content">
+      <a href="#">Research & Innovations</a>
+      <a href="#">Explore Research Labs</a>
+      <a href="#">Research Publications</a>
+      <a href="#">Research Committees</a>
+    </div>
+  </li>
+
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Services</a>
+    <div class="dropdown-content">
+      <a href="#">Hospital Statistics</a>
+      <a href="#">Hospital Fees & Charges</a>
+      <a href="#">Patient Accommodation</a>
+      <a href="#">Emergency</a>
+      <a href="#">Blood Bank</a>
+    </div>
+  </li>
+ 
+<li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Patients & Visitors</a>
+    <div class="dropdown-content">
+      <a href="#">Floor Directory</a>
+      <a href="#">Visiting Hours</a>
+      <a href="#">Facilities</a>
+      <a href="#">Feedback</a>
+      <a href="#">Guidelines</a>
+    </div>
+  </li>
+
+
+</ul>
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 5</div>
+  <img src="a.jpg" width="1325" height="600">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 5</div>
+  <img src="c.jpg" width="1325" height="600">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 5</div>
+  <img src="b.jpg" width="1325" height="600">
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 5</div>
+  <img src="d.jpg" width="1325" height="600">
+</div>
+<div class="mySlides fade">
+  <div class="numbertext">5/ 5</div>
+  <img src="e.jpg" width="1325" height="500">
+</div>
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+   <span class="dot"></span> 
+   <span class="dot"></span> 
+</div>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex> slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+</script>
+
+<q>
+
+<div id="myNav" class="overlay">
+  <a href="two.html" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+     <form action="" method="post">
+       Name:<br>
+  <input type="text" name="name">
+  <br><br>
+     Address:<br>
+  <input type="text" name="address">
+  <br>
+    Gender:<br>
+&nbsp &nbsp;
+   <input type="radio" name="gender" value="male" checked> Male<br>
+   &nbsp &nbsp &nbsp &nbsp;
+   <input type="radio" name="gender" value="female"> Female<br>
+   &nbsp &nbsp;
+   <input type="radio" name="gender" value="other"> Other<br>
+    Phone:<br>
+   <input type="tel" name="contact">
+<br>
+<br>
+    E-mail:<br>
+   <input type="email" name="email">
+<br>
+<br>
+    Date of birth:<br>
+   <input type="date" name="dob">
+<br>
+<br>
+Guardian's Name:<br>
+<input type="text" name="gname">
+<br><br>
+Medical Concern:<br>
+<textarea rows="10" cols="30" name="m_concern"></textarea>
+<br><br>
+<input type="submit" name="submit" value="Submit">
+</form>
+     </form>
+  </div>
+</div>
+<span style="font-size:25px;cursor:pointer" onclick="openNav()"><b>Book An Appointment</b></span>
+
+
+<script>
+function openNav() {
+    document.getElementById("myNav").style.width = "40%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>
+</q>
+ <p></p>
+
+
+<footer>
+<table style="width:100%">
+  <tr>
+    <th style="font-size:20px;">Patient care and health information</th>
+    <th  style="font-size:20px;">International Services</th> 
+    <th style="font-size:20px;">For Medical Professionals</th>
+  </tr>
+  <tr>
+    <td style="color:grey;">More than 3,300 physicians, scientists and researchers from New Horizons share their expertise to empower you. Find out why New Horizons is the right place for your health care. </td>
+    <td style="color:grey;">Thousands of people from around the world travel to New Horizons each year for medical care.</td>
+    <td style="color:grey;">Refer a patient. Access medical professional services. Connect to research. Grow and develop with New Horizons.</td>
+  </tr>
+   <tr>
+   <td> <a href="aboutus.html">Why Our Hospital?</a></td>
+   <td> <a href="#">International Services</a></td>
+   <td> <a href="#">For Medical Professionals<a></td>
+  </tr>
+<tr>
+<td></td>
+<td> <a href="#">Financial Services</a></td>
+<td></td>
+</tr>
+</table>
+<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter40x40.png" border=0></a>
+<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>
+<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
+<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>
+<a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>
+</footer>
+
+
+</body>
+</html>

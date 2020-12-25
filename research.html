@@ -1,0 +1,574 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {
+	color: black;
+	text-align: left;
+	font-family: Georgia;
+	font-size: 250%;
+}
+p{
+padding-right: 30px;
+float: right;
+}
+q {
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+.tabordion {
+	color: #333;
+	display: block;
+	font-family: arial, sans-serif;
+	margin: 45px;
+	position: relative;
+	width: 100%;
+}
+
+.tabordion input[name="sections"] {
+  left: -9999px;
+  position: absolute;
+  top: -9999px;
+}
+
+.tabordion section {
+  display: block;
+  padding-bottom: 250px;
+}
+
+.tabordion section label {
+  background: #ccc;
+  border:1px solid #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 15px 20px;
+  position: relative;
+  width: 320px;
+  z-index:100;
+}
+
+.tabordion section article {
+  display: none;
+  left: 230px;
+  min-width: 300px;
+  padding: 0 0 0 21px;
+  position: absolute;  
+  top: 0;
+}
+
+.tabordion section article:after {
+  background-color: #ccc;
+  bottom: 0;
+  content: "";
+  display: block;
+  left:-229px;
+  position: absolute;
+  top: 0;
+  width: 220px;
+  z-index:1;
+}
+
+.tabordion input[name="sections"]:checked + label { 
+  background: #eee;
+  color: #bbb;
+}
+
+.tabordion input[name="sections"]:checked ~ article {
+  display: block;
+}
+
+
+@media (max-width: 533px) {
+  
+  h1 {
+    width: 100%;
+  }
+
+  .tabordion {
+    width: 100%;
+  }
+  
+  .tabordion section label {
+    font-size: 1em;
+    width: 160px;
+  }  
+
+ .tabordion section article {
+    left: 200px;
+    min-width: 270px;
+  } 
+  
+  .tabordion section article:after {
+    background-color: #ccc;
+    bottom: 0;
+    content: "";
+    display: block;
+    left:-199px;
+    position: absolute;
+    top: 0;
+    width: 200px;
+
+  }  
+  
+}
+
+#hey {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table#hey td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table#hey tr:nth-child(even) {
+    background-color: #dddddd;
+}
+@media (max-width: 768px) {
+  h1 {
+    width: 96%;
+  }
+
+  .tabordion {
+    width: 96%;
+  }
+}
+
+
+@media (min-width: 1366px) {
+  h1 {
+    width: 70%;
+  }
+
+  .tabordion {
+    width: 70%;
+  }
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    color:white;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header {
+    padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: left;
+    text-align: center;
+    font-variant:small-caps;
+}
+
+
+footer {
+padding: 1em;
+    color: solid-black;
+    background-color: #f0f0f0;
+    clear: both;
+    text-align: center;
+    position:relative;
+    margin-top:-300px;
+    bottom:0;
+    width:100%;
+    height:300px; 
+}
+
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00ced1;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 12px;
+    text-decoration: none;
+    font-size:100%;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #000080;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 10000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+}
+table,td{
+	text-align:left;
+}
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;}
+table#t02 {
+    width: 100%; 
+    border-collapse: collapse;	
+    background-color: #f1f1c1;
+}
+#oh input[type=text] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('sea.jpg');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+#oh input[type=text]:focus {
+    width: 15%;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<header><a href="loginpat.html" style="float:right">Login</a>
+   <h1>
+<img src="hospital.png" alt="Smiley face" style="float:left;width:57px;height:57px;">
+     New Horizons Hospital  
+</h1>
+</header>
+<ul>
+<li class="dropdown">
+    <a href="Homepage.html" class="dropbtn">Home</a>
+
+</li>
+<li class="dropdown">
+    <a href="aboutus.html" class="dropbtn">About us</a>
+</li>
+
+<li class="dropdown">
+    <a href="dept.html" class="dropbtn">Departments & Centers</a>
+</li>
+
+  <li class="dropdown">
+    <a href="research.html" class="dropbtn">Research</a>
+</li>
+<li class="dropdown">
+    <a href="services.html" class="dropbtn">Services</a>
+</li>
+ <li class="dropdown">
+    <a href="patients.html" class="dropbtn">Patients & Visitors</a>
+</li>
+<form id="oh">
+  <input type="text" name="search" placeholder="Search" style="float:right">
+</form>
+</ul>
+<p></p>
+<div class="tabordion">
+  <section id="section1">
+    <input type="radio" name="sections" id="option1" checked>
+    <label for="option1">Research & Innovations</label>
+	<article>
+    <table>
+  <tr>
+    <th style="color:blue">Clinical Research</th>
+  </tr>
+  <tr>
+    <td>ARI is India's first and single largest site solutions organization (SSO) having experience of coordinating conduct of over 850 clinical trials across 10 locations and 17 sites, various therapeutic disciplines over the last 16 years. 17 sites, With the current strength of almost 80 certified and experienced Clinical Research Coordinators and 200 Principal Investigators on its panel across 15 sites, ARI ensures ethical conduct of clinical research across the hospital group. ARI conducts phase II, III and IV clinical trials, of which 80% are global multi-Â­centric trials.
+ARI has developed the capability to now conduct clinical studies for drugs, devices, software applications and others. Further, ARI works with its clients and partners with a variety of creative business models to enable progressive and quality research.
+ARI has established a benchmark in terms of ethics compliance and standards across its sites. . The Institutional Ethics Committees at each of the New horizon Hospital centers are registered with the national regulatory agency and institutional ethics committees at Chennai and Hyderabad are also OHRP registered. ARI also has built an in-house capability in ethics and quality assurance for clinical trials across multiple sites.
+The Institutional Ethics Committees in all the 10 New Horizon Hospital locations are registered with the Drug Control General of India (DCGI). ARI currently is coordinating the conduct of almost 100 clinical studies across New Horizon hospitals.</td>
+  </tr>
+  <tr>
+  <th style="color:blue">Investigator Integrated Sites</th>
+  </tr>
+  <tr>
+    <td>ARI is currently in discussions with pharmaceutical companies to enable Investigator Initiated Studies (IIS) by providing grants to clinicians. Many companies support the study with technical assistance, funding and drugs if required.
+Two objectives that are envisaged to be accomplished by Investigator Initiated studies (IIS) are:
+Â»Â  Clinicians innovating and translating ideas into clinical applications 
+Â» Â  Pharma cos research programs being benefitted from the clinical researchÂ 
+Pfizer and Philips are open to promoting IIS based on clinician ideas. </td>
+  </tr>
+<tr>
+<th style="color:blue">
+Eligibility
+</th>
+</tr>
+<tr>
+<td>
+Life Science Graduates/ Post Graduates/ MBBS/ BAMS/ BHMS/ BDS/ BPT/ B.pharm/ B.Sc from a recognized University <br>
+ Minimum 55% of marks<br> 
+ Registration Fee:<br>
+Â Rs.500/- payable at the time of submission of the application form.
+ADVANCED POST GRADUATE DIPLOMA IN CLINICAL RESEARCH (APGDCR)<br>
+Full time - 12 months (6 months theory & 6 months Internship)</td>
+  </tr>
+</table>
+</article>
+ <section id="section2">
+    <input type="radio" name="sections" id="option2" checked>
+    <label for="option2">Explore Research Labs</label>
+    <article>
+    <img src="l.jpg" height="400" width="600">
+    <table id=t03>
+  <tr>
+    <th>DISEASE</th>
+    <th>DOCTOR</th>
+    
+  </tr>
+  <tr>
+    <td>Advanced liver diseases</td>
+    <td>Maria Anders</td>
+    
+  </tr>
+  <tr>
+    <td>Bio Material and Regenerative Medicine</td>
+    <td>Francisco Chang</td>
+  </tr>
+  <tr>
+    <td>Cancer Genetics</td>
+    <td>Roland Mendel</td>
+  </tr>
+  <tr>
+    <td>Cardiovascular problems</td>
+    <td>Helen Bennett</td>
+  </tr>
+  <tr>
+    <td>Orthopedic Biomechanics</td>
+    <td>Yoshi Tannamuri</td>
+  </tr>
+  <tr>
+    <td>Gastro Intestinal Mechanotransduction</td>
+    <td>Giovanni Rovelli</td>
+  </tr>
+  <tr>
+    <td>Vascular Biology</td>
+    <td>Sanjay Misra</td>
+  </tr>
+</table>
+   </article>
+ <section id="section3">
+    <input type="radio" name="sections" id="option3" checked>
+    <label for="option3">Research Publications</label>
+    <article>
+    <h2>Publications</h2>
+	<p>New Horizion authors publish approximately 4,600 articles a year in biomedical journals. Publication results for New Horizon authors returned here cover a broader range of scholarly work than those found on PubMed.</p>
+      <h2>
+To Address Health Disparities, Medical Students Connect With Kids</h2>
+<p>Mini med school projects inspire disadvantaged youth to consider health careers and help medical students get to know underserved communities.</p>
+<h2>Print Publications</h2>
+<p>
+Today's Christian Doctor - A quarterly magazine published by CMDA on current issues in faith and healthcare<br>
+2015 Annual Report - "His Hands, His Feet, His Voice"<br>
+Standards4Life - Simple and succinct guides to help answer your biggest questions about healthcare issues<br>
+Grace Prescriptions - A new print and video publication designed to teach you how to share your faith with your patients effectively and ethically<br>
+Prescriptions for the Heart - A series of biblically-oriented patient information sheets written to help cope with life-changing events</p>
+<h2>Audio Publications</h2>
+<p>
+Christian Doctor's Digest - CMDA's popular audio magazine, hosted by Dr. David Stevens<br>
+CDD STAT - Special Christian Doctor's Digest interviews covering current topics<br>
+Dental Ministries Digest - A new audio resource for Christian dental professionals</p>
+
+<h2>E-Newsletters</h2>
+<p>
+The Point - A weekly blog keeping you updated on emerging topics relevant to today's issues in healthcare<br>
+Dental Impact - An informational e-newsletter for dental members<br>
+e-Pistle - A bi-monthly e-newsletter from the Center for Medical MissionsÂ® to encourage and equip healthcare missionaries in their work for Christ<br>
+FCPA Newsletter - A quarterly e-newsletter for physician assistants<br>
+GHO Dispatch - A monthly e-newsletter for Global Health Outreach trip participants<br></p>
+</article>
+<section id="section4">
+    <input type="radio" name="sections" id="option4" checked>
+    <label for="option4">Research Committees</label>
+    <article>
+     <h2>Committees</h2>
+	 <p>There are many research commities in our Hospital.<br>
+	 <h3>OBJECTIVES:</h3>
+<p>Appropriate constitution of ethics committees (EC) is crucial to ensure a high quality review of research proposals. We studied the profile and role of EC members of Pune-based health and research organisations.
+</p>
+<h3>METHOD:</h3>
+<p>52 ethics committee members representing 12 health and bio-medical research institutions in Pune city completed the structured questionnaires.
+</p>
+<h3>RESULTS:</h3>
+<p>The respondents represented ECs of hospitals (67%), research organisations (23%) and NGOs (10%). The attendance of members at EC meetings was significantly associated with higher qualification (p=0.004), more than 20 years of research experience (p=0.023) and more experience of working with ECs (p=0.032). Most of the chairpersons or secretaries had a medical background (p=0.027), and were more likely to be formally trained in ethics compared to other members (p=0.049) and had more research experience (0.043). Overall, 62% had doctorate degrees and 38% were post-graduates or graduates. Forty four percent had the correct knowledge of ethical principles. A majority (79%) of EC members felt that formal training was necessary and 84% said that there should be networking of the various ECs to share thoughts and experiences.
+</p>
+<h3>CONCLUSIONS:</h3>
+<p>EC members were generally senior in age, highly educated and well-experienced in research. Representation of lawyers, ethicists and non-scientific members needs to be increased. Even with an appropriate EC constitution, the members had sub-optimal understanding of ethical issues and ethical principles. Formal training of EC members in ethics, and networking of ECs, is crucial. The scope of the role of EC members needs to be clearly recognised and understood by the constituting institutes.
+</p>
+
+</article>
+
+</section>
+</div>
+
+<footer>
+<table style="width:100%">
+  <tr>
+    <th style="font-size:20px;">Patient care and health information</th>
+    <th  style="font-size:20px;">International Services</th> 
+    <th style="font-size:20px;">For Medical Professionals</th>
+  </tr>
+  <tr>
+    <td style="color:grey;">More than 3,300 physicians, scientists and researchers from New Horizons share their expertise to empower you. Find out why New Horizons is the right place for your health care. </td>
+    <td style="color:grey;">Thousands of people from around the world travel to New Horizons each year for medical care.</td>
+    <td style="color:grey;">Refer a patient. Access medical professional services. Connect to research. Grow and develop with New Horizons.</td>
+  </tr>
+   
+</table>
+<a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/PLACEHOLDER"><img alt="follow me on twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter40x40.png" border=0></a>
+<a target="_blank" title="follow me on facebook" href="http://www.facebook.com/PLACEHOLDER"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a>
+<a target="_blank" title="follow me on google plus" href="https://plus.google.com/PLACEHOLDER"><img alt="follow me on google plus" src="https://c866088.ssl.cf3.rackcdn.com/assets/googleplus30x30.png" border=0></a>
+<a target="_blank" title="follow me on instagram" href="http://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a>
+<a target="_blank" title="follow me on youtube" href="http://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a>
+</footer>
+
+</body>
+</html>
